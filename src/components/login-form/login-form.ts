@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import {AngularFireAuth} from 'angularfire2/auth';
+import {Account} from '../../models/account/account.interface';
 /**
  * Generated class for the LoginFormComponent component.
  *
@@ -15,11 +16,21 @@ export class LoginFormComponent {
 
   text: string;
 
-  constructor(private navCtrl:NavController) {
+  account = {} as Account;
+
+  constructor(private afAuth:AngularFireAuth,private navCtrl:NavController) {
     console.log('Hello LoginFormComponent Component');
     this.text = 'Hello World';
   }
 
+  async login(){
+    try {
+      const result = await this.afAuth.auth.signInWithEmailAndPassword(this.account.email,this.account.password);
+      console.log(result)
+    } catch (e) {
+      console.error(e);
+    }
+  }
   navigateToPage(pageName:string){
     
      pageName === 'TabsPage' ? this.navCtrl.setRoot(pageName) : this.navCtrl.push(pageName)
