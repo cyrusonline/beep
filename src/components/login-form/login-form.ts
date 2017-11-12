@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {Account} from '../../models/account/account.interface';
@@ -17,18 +17,19 @@ export class LoginFormComponent {
   text: string;
 
   account = {} as Account;
-
+  @Output() loginStatus: EventEmitter<any>;
   constructor(private afAuth:AngularFireAuth,private navCtrl:NavController) {
-    console.log('Hello LoginFormComponent Component');
-    this.text = 'Hello World';
+    this.loginStatus = new EventEmitter<any>();
+   
   }
 
   async login(){
     try {
       const result = await this.afAuth.auth.signInWithEmailAndPassword(this.account.email,this.account.password);
-      console.log(result)
+      this.loginStatus.emit(result);
     } catch (e) {
       console.error(e);
+      this.loginStatus.emit(e);
     }
   }
   navigateToPage(pageName:string){
