@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {Profile} from '../../models/profile/profile.interface';
 /**
  * Generated class for the EditProfileFormComponent component.
  *
@@ -7,16 +7,17 @@ import { Component } from '@angular/core';
  * Components.
  */
 @Component({
-  selector: 'edit-profile-form',
+  selector: 'app-edit-profile-form',
   templateUrl: 'edit-profile-form.html'
 })
 export class EditProfileFormComponent {
 
-  text: string;
+  profile = {} as Profile;
 
   constructor() {
-    console.log('Hello EditProfileFormComponent Component');
-    this.text = 'Hello World';
+ 
   }
+  saveProfile(){
 
+  }
 }

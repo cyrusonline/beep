@@ -6,10 +6,11 @@ import { ComponentsModule } from '../../components/components.module';
 @NgModule({
   declarations: [
     EditProfilePage,
-    ComponentsModule
   ],
   imports: [
     IonicPageModule.forChild(EditProfilePage),
+    ComponentsModule
+    
   ],
 })
 export class EditProfilePageModule {}
