@@ -26,7 +26,7 @@ export class LoginPage {
         message:`Welcome to the BEEP, ${event.result.email}`,
         duration:3000
       }).present();
-      this.navCtrl.setRoot('ProfilePage')
+      this.navCtrl.setRoot('EditProfilePage')
     }else{
       this.toast.create({
         message:event.error.message,
