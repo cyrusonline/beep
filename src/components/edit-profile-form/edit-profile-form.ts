@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {Profile} from '../../models/profile/profile.interface';
+
+import {AuthService} from '../../providers/auth/auth.service';
+import {DataService} from '../../providers/data/data.service';
 /**
  * Generated class for the EditProfileFormComponent component.
  *
@@ -14,10 +17,10 @@ export class EditProfileFormComponent {
 
   profile = {} as Profile;
 
-  constructor() {
+  constructor(private auth:AuthService,private data: DataService) {
  
   }
-  saveProfile(){
-
+  async saveProfile(){
+    const result = await this.data.saveProfile
   }
 }
